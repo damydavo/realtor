@@ -6,7 +6,7 @@ import userRoute from "./routes/userRoute.js"
 import listingRoute from "./routes/listingRoute.js"
 import cookieParser from 'cookie-parser';
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 5000
 
 
 const app = express();

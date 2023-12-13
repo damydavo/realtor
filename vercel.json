@@ -1,17 +1,14 @@
 {
     "builds": [
         {
-            "src": "frontend/package.json",
-            "use": "@now/static-build",
-            "config": {
-                "distDir": "frontend/build"
-            }
+            "src": "./app.js",
+            "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "./app.js"
+            "dest": "backend/app.js"
         }
     ]
 }

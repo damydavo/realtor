@@ -5,6 +5,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoute from "./routes/userRoute.js"
 import listingRoute from "./routes/listingRoute.js"
 import cookieParser from 'cookie-parser';
+import * as path from 'path';
 
 const port = process.env.PORT || 5000
 
@@ -19,18 +20,12 @@ connectDB()
 app.use('/api/users', userRoute)
 app.use('/api/listing', listingRoute)
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-app.get("*", function (_, res) {
-    res.sendFile(
-        path.join(__dirname, "../frontend/build/index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err)
-            }
-        }
-    )
-})
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, './frontend', 'build')));
+    app.get('/*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../frontend', 'build', 'index.html'));
+    })
+}
 
 app.use(notFound);
 app.use(errorHandler)

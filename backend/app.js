@@ -19,7 +19,6 @@ connectDB()
 
 const __dirname = path.resolve();
 
-
 app.use('/api/users', userRoute)
 app.use('/api/listing', listingRoute)
 app.use(express.static(path.join(__dirname, '/frontend/build')))

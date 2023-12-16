@@ -30,7 +30,7 @@ app.use('/api/listing', listingRoute)
 
 app.use(cors(
     {
-        origin: ["https://realtor-jade.vercel.app/"],
+        origin: ["https://realtor-frontend-phi.vercel.app/"],
         method: ["POST", "GET"],
         credential: true
 

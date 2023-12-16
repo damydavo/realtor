@@ -5,7 +5,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoute from "./routes/userRoute.js"
 import listingRoute from "./routes/listingRoute.js"
 import cookieParser from 'cookie-parser';
-import cors from "cors"
+// import cors from "cors"
 // import path from 'path';
 
 const port = process.env.PORT || 5000
@@ -28,15 +28,15 @@ app.use('/api/listing', listingRoute)
 //     res.sendFile(path.join(__dirname, "frontend", 'build', 'index.html'))
 // })
 
-app.use(cors(
-    {
-        origin: ["https://realtor-frontend-phi.vercel.app/"],
-        method: ["POST", "GET"],
-        credential: true
+// app.use(cors(
+//     {
+//         origin: ["https://realtor-frontend-phi.vercel.app/"],
+//         method: ["POST", "GET"],
+//         credential: true
 
 
-    }
-))
+//     }
+// ))
 
 app.use(notFound);
 app.use(errorHandler)

@@ -5,7 +5,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoute from "./routes/userRoute.js"
 import listingRoute from "./routes/listingRoute.js"
 import cookieParser from 'cookie-parser';
-// import path from 'path';
+import path from 'path';
 
 const port = process.env.PORT || 5000
 

@@ -1,7 +1,7 @@
 {
   "name": "realtor",
   "version": "1.0.0",
-  "type": "common.js",
+  "type": "module",
   "description": "",
   "main": "app.js",
   "scripts": {

@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 const Listings = () => {
 
     const { listing } = useSelector((state) => state.listing)
+    const { userInfo } = useSelector((state) => state.auth)
+
 
     const dispatch = useDispatch()
 

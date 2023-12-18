@@ -3,13 +3,17 @@ import { useState } from "react";
 import { app } from './../firebase';
 import { useCreateListingMutation } from '../slices/listingApiSlice';
 import { setCredentials } from '../slices/authSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getStorage, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { useNavigate } from 'react-router-dom';
 
 const CreateListing = () => {
     const [files, setFiles] = useState([])
+
+    const { userInfo } = useSelector((state) => state.auth)
+
+    console.log(userInfo.name)
 
     const [formData, setFormData] = useState({
         imageUrls: [],
@@ -24,6 +28,7 @@ const CreateListing = () => {
         offer: false,
         parking: false,
         furnished: false,
+        user: userInfo.username
     })
 
     const { imageUrls, name, description, address, type, bedrooms, bathrooms, regularPrice, discountPrice, offer, parking, furnished } = formData

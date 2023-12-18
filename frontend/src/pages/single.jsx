@@ -1,5 +1,5 @@
 import { setListing } from "../slices/listingSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import TopMenu from './../component/topmenu';
@@ -15,6 +15,10 @@ const Single = () => {
     SwiperCore.use([Navigation])
 
     const { listings } = useSelector((state) => state.listing)
+
+    console.log(listings.user)
+
+    const [contact, setContact] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -91,8 +95,13 @@ const Single = () => {
                         <MdHighQuality color="green" size="26" />
                         <p>{furnished && "Furnished"} </p>
                     </div>
-
                 </div>
+                {
+                    !contact && (
+                        <button onClick={() => setContact(!contact)} className="uppercase bg-slate-700 p-3 rounded-lg bg-opacity-95 text-white">Contact Landlord</button>
+                    )
+                }
+
             </div>
         </>
 

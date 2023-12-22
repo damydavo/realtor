@@ -5,7 +5,6 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoute from "./routes/userRoute.js"
 import listingRoute from "./routes/listingRoute.js"
 import cookieParser from 'cookie-parser';
-import path from 'path';
 
 const port = process.env.PORT || 5000
 
@@ -17,16 +16,8 @@ app.use(express.urlencoded({ extended: true }))
 dotenv.config()
 connectDB()
 
-const __dirname = path.resolve();
-
 app.use('/api/users', userRoute)
 app.use('/api/listing', listingRoute)
-app.use(express.static(path.join(__dirname, '/frontend/build')))
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "frontend", 'build', 'index.html'))
-})
-
 
 app.use(notFound);
 app.use(errorHandler)

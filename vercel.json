@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "backend/**/*",
+            "use": "@now/node-server"
+        },
+        {
+            "src": "frontend/**/*",
+            "use": "@now/static-build",
+            "config": {
+                "distDir": "frontend/build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "backend/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "frontend/build/$1"
+        }
+    ]
+}

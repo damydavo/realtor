@@ -6,8 +6,6 @@ import userRoute from "./routes/userRoute.js"
 import listingRoute from "./routes/listingRoute.js"
 import cookieParser from 'cookie-parser';
 
-const port = process.env.PORT || 5000
-
 const app = express();
 app.use(cookieParser());
 app.use(express.json())
@@ -26,4 +24,4 @@ app.get('/', (req, res) => {
 app.use(notFound);
 app.use(errorHandler)
 
-app.listen(port, () => console.log(`app is listening on port ${port}`));
+export default app;

@@ -19,6 +19,10 @@ connectDB()
 app.use('/api/users', userRoute)
 app.use('/api/listing', listingRoute)
 
+app.get('/', (req, res) => {
+    res.send("project started")
+})
+
 app.use(notFound);
 app.use(errorHandler)
 

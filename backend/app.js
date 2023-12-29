@@ -5,24 +5,14 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoute from "./routes/userRoute.js"
 import listingRoute from "./routes/listingRoute.js"
 import cookieParser from 'cookie-parser';
-import cors from 'cors'
+import path from 'path'
 
 const port = process.env.PORT || 5000
-
-app.use(cors(
-    {
-        origin: ["https://localhost:5000"],
-        method: ["POST", "GET"],
-        credentials: true
-    }
-))
 
 const app = express();
 app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
-
 
 dotenv.config()
 connectDB()
@@ -30,9 +20,17 @@ connectDB()
 app.use('/api/users', userRoute)
 app.use('/api/listing', listingRoute)
 
-app.get('/', (req, res) => {
-    res.json("Hello")
-})
+//serve the frontend
+if(process.env.NODE_ENV === 'production') {
+    //set build folder as static
+    app.use(express.static(path.join(__dirname, '../frontend/build')))
+
+    app.get('*', (req, res) => res.sendFile(__dirname, '../', 'frontend', 'build', 'index.html'))
+} else {
+    app.get('/', (req, res) => {
+        res.status(200).json({ message: "Welcome to realtor" })
+    })
+}
 
 app.use(notFound);
 app.use(errorHandler)

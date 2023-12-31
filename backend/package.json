@@ -5,10 +5,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node backend/app.js",
-    "server": "nodemon backend/app.js",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "nodemon backend/app.js"
   },
   "author": "damydavo",
   "license": "ISC",

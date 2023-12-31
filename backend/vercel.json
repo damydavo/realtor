@@ -3,7 +3,7 @@
     "name": "node-js",
     "builds": [
         {
-            "src": "app.js",
+            "src": "backend/app.js",
             "use": "@vercel/node"
         }
     ],
